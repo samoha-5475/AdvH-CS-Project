@@ -1,11 +1,11 @@
 <?php
 
 // Initialised connection variable to prevent errors in the IDE
-$connection = "";
+$connection = '';
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $searchType = $_GET["searchType"];
-    $searchText = $_GET["searchText"];
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $searchType = $_GET['searchType'];
+    $searchText = $_GET['searchText'];
 
     // SELECT CONCAT(forename, ' ', surname) AS Name FROM drivers WHERE CONCAT(forename, ' ', surname) LIKE '%$searchText%';
 
@@ -28,5 +28,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     mysqli_close($connection);
 
-    echo "Connection to database closed.";
+    // echo 'Connection to database closed.';
 }

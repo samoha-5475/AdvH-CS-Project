@@ -32,24 +32,24 @@ include 'header.php';
     <section>
         <div class="row">
             <div class="col-6">
-                <div class="img-button-container">
-                    <img src="img/placeholder.jpg" alt="placeholder">
-                    <button>Drivers</button>
+                <div class="imgButtonContainer">
+                    <img src="img/drivers.jpg" alt="placeholder">
+                    <button class="imgButton">Drivers</button>
                 </div>
             </div>
             <div class="col-6">
-                <div class="img-button-container">
-                    <img src="img/placeholder.jpg" alt="placeholder">
-                    <button>Tracks</button>
+                <div class="imgButtonContainer">
+                    <img src="img/circuits.jpg" alt="placeholder">
+                    <button class="imgButton">Tracks</button>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12" style="text-align: center;">
-                <div class="img-button-container">
+                <div class="imgButtonContainer">
                     <img src="img/placeholder.jpg" alt="placeholder">
                     <button>Championships</button>
-                </div>
+                </div class="imgButton">
             </div>
         </div>
     </section>

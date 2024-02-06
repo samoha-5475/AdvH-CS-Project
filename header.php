@@ -1,5 +1,5 @@
 <header>
-    <div class="row">
+    <div class="row" style="display: flex; align-items: center;">
         <div class="col-6">
             <div class="header-container">
                 <h1 id="title">Formula One Database</h1>

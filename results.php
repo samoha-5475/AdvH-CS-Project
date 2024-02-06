@@ -10,36 +10,41 @@
 <body>
 <?php
 include 'header.php';
-include 'search.php';
 ?>
 <main>
     <section>
         <div class="row">
             <div class="col-12">
-                <table id="resultsTable">
-                    <tr>
+                <div id="resultsTableContainer">
+                    <table id="resultsTable">
                         <?php
-                        $headers = mysqli_fetch_fields($result);
+                        include 'search.php';
 
-                        foreach ($headers as $header) {echo "<th>{$header->name}</th>";}
-                        ?>
-                        <th>Favourite</th>
-                    </tr>
-                    <?php
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-                            // echo "<tr><td>{$row[0]}</td><td>{$row[1]}</td><td>{$row[2]}</td><td>{$row[3]}</td><td>{$row[4]}</td></tr>";
-                            echo "<tr>";
-                            foreach ($row as $r) {echo "<td>{$r}</td>";}
-                            echo "</tr>";
+                        if (mysqli_num_rows($result) > 0) {
+                            $headers = mysqli_fetch_fields($result);
+
+                            echo '<tr>';
+                            foreach ($headers as $header) {
+                                echo "<th>{$header->name}</th>";
+                            }
+                            echo '</tr>';
+
+                            while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                                echo '<tr>';
+                                foreach ($row as $r) {
+                                    echo "<td>{$r}</td>";
+                                }
+                                echo '</tr>';
+                            }
+                        } else {
+                            die('<br><p>No results found!</p>');
                         }
-                    } else {
-                        die("<br><p>No results found!</p>");
-                    }
-                    ?>
-                </table>
+                        ?>
+                    </table>
+                </div>
+
                 <?php
-                echo "<br><p>There are ".mysqli_num_rows($result)." results!</p>";
+                echo '<br><p>There are ' . mysqli_num_rows($result) . ' results!</p>';
                 ?>
             </div>
         </div>
