@@ -1,0 +1,127 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+/* Remove browser defaults */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    border: 1px solid #ff0000;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media only screen and (max-width: 800px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    .header-container {text-align: center;}
+}
+
+/* Navigation Bar */
+#nav-bar {
+    display: inline-block;
+    padding: 15px;
+}
+
+#nav-bar ul {
+    list-style-type: none;
+}
+
+#nav-bar ul li {
+    float: left;
+}
+
+#nav-bar ul li a {
+    text-decoration: none;
+    display: block;
+    font-size: 1.5em;
+    color: #000000;
+}
+
+/* Button on top of image */
+.img-button-container {
+    /* position: relative; */
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+}
+
+.img-button-container img {
+    max-width: 70%;
+    height: auto;
+}
+
+.img-button-container button {
+    position: absolute;
+}
+
+/* Search bar */
+#searchBarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+#searchBar {
+    width: max-content;
+    display: flex;
+    place-items: center;
+    box-shadow: 0.2em 0.2em 0.5em;
+}
+
+#searchText {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.5em;
+    border: none;
+    padding-left: 0.2em;
+    margin-right: 0.1em;
+}
+
+#searchDropdown {
+    background: none;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.5em;
+    border: none;
+}
+
+#searchSubmit {
+    background-color: #17bbf1;
+    border: none;
+}
+
+#searchSubmit img {
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+#title {
+    font-size: 2.5em;
+}
