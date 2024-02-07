@@ -5,9 +5,6 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-* {
     box-sizing: border-box;
 }
 
@@ -27,7 +24,7 @@
 [class*="col-"] {
     float: left;
     padding: 15px;
-    border: 1px solid #ff0000;
+    /*border: 1px solid #ff0000;*/
 }
 
 .row::after {
@@ -36,30 +33,25 @@
     display: table;
 }
 
-@media only screen and (max-width: 800px) {
-    [class*="col-"] {
-        width: 100%;
-    }
-
-    .header-container {text-align: center;}
+main, header {
+    margin-right: 5em;
+    margin-left: 5em;
 }
 
 /* Navigation Bar */
-#nav-bar {
+#navBar {
     float: right;
-    display: inline-block;
-    padding: 15px;
 }
 
-#nav-bar ul {
+#navBar ul {
     list-style-type: none;
 }
 
-#nav-bar ul li {
+#navBar ul li {
     float: left;
 }
 
-#nav-bar ul li a {
+#navBar ul li a {
     font-family: 'Rubik', sans-serif;
     text-decoration: none;
     font-size: 1.5em;
@@ -68,7 +60,7 @@
     padding: 1em;
 }
 
-#nav-bar ul li a:hover {
+#navBar ul li a:hover {
     background-color: #f0f8ff;
 }
 
@@ -78,7 +70,6 @@
     align-items: center; /* Center items vertically */
     justify-content: center; /* Center items horizontally */
 }
-
 .imgButtonContainer img {
     max-width: 70%;
     height: auto;
@@ -86,6 +77,10 @@
 
 .imgButtonContainer button {
     position: absolute;
+}
+
+#bottomImgButton {
+    width: 45%;
 }
 
 /* Button */
@@ -159,11 +154,59 @@
     height: auto;
 }
 
-/* Title */
+/* Header */
+#headerRow {
+    display: flex;
+    align-items: center;
+}
+
 #title {
     font-size: 2.5em;
     font-family: 'Rubik', sans-serif;
     font-weight: 600;
+}
+
+/* Results Table */
+#resultsTable, #resultsTable th, #resultsTable td {
+    /*border: 1px solid;*/
+}
+
+#resultsTable {
+    font-family: 'Rubik', sans-serif;
+    border-collapse: collapse;
+    /* RETIRED */
+}
+
+#resultsTable th, #resultsTable td {
+    border-bottom: 1px solid #ddd;
+    padding: 1em;
+    text-align: center;
+
+}
+
+#resultsTable th {
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+#resultsTable td {
+    vertical-align: center;
+    height: 1.5em;
+}
+
+#resultsTable tr:hover {
+    background-color: #f0f8ff;
+}
+
+#numResultsContainer {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+#numResults {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1em;
+    padding: 1em;
 }
 
 /* Footer */
@@ -174,4 +217,38 @@ footer {
     font-size: 0.75em;
 }
 
-/* IMPORTANT IMPORTANT BUG WHEN MAKE SMALLER NAV BAR DOESNT GO UNDER TITLE DUE TO THE STYLING IN 'header.php'
+.favButtonContainer {
+    width: 7.5em;
+}
+
+.favButton {
+    max-width: 60%;
+    height: auto;
+}
+
+.favButton:hover {
+    cursor: pointer;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 800px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    main, header {margin: 0;}
+
+    #headerRow {display: block;}
+
+    #bottomImgButton {width: 100%;}
+
+    #searchText {padding-right: 2em;}
+
+    .title-container {text-align: center;}
+
+    #navBarContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

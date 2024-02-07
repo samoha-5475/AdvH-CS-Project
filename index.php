@@ -33,13 +33,13 @@ include 'header.php';
         <div class="row">
             <div class="col-6">
                 <div class="imgButtonContainer">
-                    <img src="img/drivers.jpg" alt="placeholder">
+                    <img src="img/drivers.jpg" alt="Drivers from the 2022 season">
                     <button class="imgButton">Drivers</button>
                 </div>
             </div>
             <div class="col-6">
                 <div class="imgButtonContainer">
-                    <img src="img/circuits.jpg" alt="placeholder">
+                    <img src="img/circuits.jpg" alt="Incident at the Australian Grand Prix 2023">
                     <button class="imgButton">Tracks</button>
                 </div>
             </div>
@@ -47,9 +47,9 @@ include 'header.php';
         <div class="row">
             <div class="col-12" style="text-align: center;">
                 <div class="imgButtonContainer">
-                    <img src="img/placeholder.jpg" alt="placeholder">
-                    <button>Championships</button>
-                </div class="imgButton">
+                    <img id="bottomImgButton" src="img/championships.jpg" alt="Schumacher celebrating with teamate">
+                    <button class="imgButton">Championships</button>
+                </div>
             </div>
         </div>
     </section>

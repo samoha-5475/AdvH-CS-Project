@@ -9,43 +9,65 @@
 <body>
 <?php
 include 'header.php';
-require 'database.php';
+include 'database.php';
+
+function createLeaderboard($result) {
+    if (mysqli_num_rows($result) > 0) {
+        $headers = mysqli_fetch_fields($result);
+
+        echo '<tr>';
+        foreach ($headers as $header) {
+            echo "<th>$header->name</th>";
+        }
+        echo '</tr>';
+
+        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+            echo '<tr>';
+            foreach ($row as $r) {
+                echo "<td>$r</td>";
+            }
+            echo '</tr>';
+        }
+    } else {
+        die('<p>No results found!</p>');
+    }
+}
+
 ?>
 <main>
     <section>
         <div class="row">
             <div class="col-4">
-                <h1>Top Drivers</h1>
+                <h2>Top Drivers</h2>
             </div>
             <div class="col-4">
-                <h1>Top Constructors</h1>
+                <h2>Top Constructors</h2>
             </div>
             <div class="col-4">
-                <h1>Top Points</h1>
+                <h2>Top Points</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
-                <?php
-                $query = "SELECT forename, surname, IFNULL(SUM(results.position = 1), 0) AS `Grand Prix Wins` FROM drivers, results WHERE drivers.driverId = results.driverId GROUP BY drivers.driverId ORDER BY `Grand Prix Wins` DESC;";
+                <table class="leaderboard">
+                    <?php
+                    $query = "SELECT CONCAT(forename, ' ', surname) AS Name, IFNULL(SUM(results.position = 1), 0) AS `Grand Prix Wins` FROM drivers, results WHERE drivers.driverId = results.driverId GROUP BY drivers.driverId ORDER BY `Grand Prix Wins` DESC LIMIT 10;";
 
-                $result = mysqli_query($connection, $query);
+                    $result = mysqli_query($connection, $query);
 
-                mysqli_close($connection);
+                    mysqli_close($connection);
 
-                if (mysqli_num_rows($result) > 0) {
-                    $rows = 0;
-                    echo "<table>";
-                    echo "<tr><th>Forename</th><th>Surname</th><th>Grand Prix Wins</th></tr>";
-                    while ($rows < 10 and $row = mysqli_fetch_array($result)) {
-                        $rows++;
-                        echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><</tr>";
-                    }
-                    echo "</table>";
-                } else {
-                    die("<br>No results found!<br><br><a href='index.php'>Home</a>");
-                }
-                ?>
+                    createLeaderboard($result);
+                    ?>
+                </table>
+            </div>
+            <div class="col-4">
+                <table class="leaderboard">
+                </table>
+            </div>
+            <div class="col-4">
+                <table class="leaderboard">
+                </table>
             </div>
         </div>
     </section>
