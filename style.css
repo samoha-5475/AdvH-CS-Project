@@ -11,15 +11,6 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
-}
-
-main, header {
-    padding-right: 5em;
-    padding-left: 5em;
-}
-
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
@@ -36,7 +27,7 @@ main, header {
 [class*="col-"] {
     float: left;
     padding: 15px;
-    /*border: 1px solid #ff0000; !* For debugging purposes *!*/
+    border: 1px solid #ff0000;
 }
 
 .row::after {

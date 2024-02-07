@@ -8,6 +8,16 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formula One Database</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
 <?php
 include 'header.php';
 ?>
@@ -42,9 +52,12 @@ include 'header.php';
                         ?>
                     </table>
                 </div>
-
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
                 <?php
-                echo '<br><p>There are ' . mysqli_num_rows($result) . ' results!</p>';
+                echo '<p>There are ' . mysqli_num_rows($result) . ' results!</p>';
                 ?>
             </div>
         </div>
