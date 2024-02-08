@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formula One Database</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="placeholderTextManager.js" defer></script>
 </head>
 <body>
 <?php
