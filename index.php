@@ -34,21 +34,13 @@ include 'header.php';
             <div class="col-6">
                 <div class="imgButtonContainer">
                     <img src="img/drivers.jpg" alt="Drivers from the 2022 season">
-                    <button class="imgButton">Drivers</button>
+                    <button class="imgButton"><a href="drivers.php">Drivers</a></button>
                 </div>
             </div>
             <div class="col-6">
                 <div class="imgButtonContainer">
                     <img src="img/circuits.jpg" alt="Incident at the Australian Grand Prix 2023">
-                    <button class="imgButton">Tracks</button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" style="text-align: center;">
-                <div class="imgButtonContainer">
-                    <img id="bottomImgButton" src="img/championships.jpg" alt="Schumacher celebrating with teamate">
-                    <button class="imgButton">Championships</button>
+                    <button class="imgButton"><a href="tracks.php">Tracks</a></button>
                 </div>
             </div>
         </div>

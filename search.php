@@ -3,11 +3,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $searchType = $_GET['searchType'];
     $searchText = $_GET['searchText'];
 
-    // SELECT CONCAT(forename, ' ', surname) AS Name FROM drivers WHERE CONCAT(forename, ' ', surname) LIKE '%$searchText%';
-
     switch ($searchType) {
         case 'drivers':
-            $query = ("SELECT IFNULL(number, 'N/A') as number, IFNULL(code, 'N/A') as code, forename, surname, nationality, driverId FROM drivers WHERE CONCAT(forename, ' ', surname) LIKE '%$searchText%';");
+            $query = ("SELECT IFNULL(number, 'N/A') as number, IFNULL(code, 'N/A') as code, forename, surname, nationality FROM drivers WHERE CONCAT(forename, ' ', surname) LIKE '%$searchText%';");
             break;
         case 'constructors':
             $query = ("SELECT name, nationality FROM constructors WHERE name LIKE '%$searchText%';");

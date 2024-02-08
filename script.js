@@ -15,14 +15,3 @@ function changeSearchPlaceholderText() {
             searchText.placeholder = "Enter track name...";
     }
 }
-
-function favouriteDriver(img, driverId) {
-    console.log("FavouriteDriver() called!");
-
-    if (img.src.includes('img/heart.png')) {
-        img.src = 'img/heart-fill.png';
-        fetch(`favouriteDriver.php?intValue=${driverId}`, { method: 'GET' });
-    } else {
-        img.src = 'img/heart.png';
-    }
-}
