@@ -277,7 +277,7 @@ main, header {
 .listItem {
     font-family: 'Rubik', sans-serif;
     padding: 0.5em;
-    width: 20%;
+    width: 25%;
 }
 
 #alphabetContainer {
@@ -323,6 +323,8 @@ footer {
     #searchText {padding-right: 2em;}
 
     .title-container {text-align: center;}
+
+    .listItem {width: 50%;}
 
     #navBarContainer {
         display: flex;

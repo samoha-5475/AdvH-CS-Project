@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if (isset($_GET['driverId'])) {
+    $driverId = $_GET['driverId'];
+
+    if (!isset($_SESSION['favDrivers'])) {
+        $_SESSION['favDrivers'] = array();
+    }
+
+    $_SESSION['favDrivers'][] = $driverId;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,13 +49,26 @@ include 'search.php';
                             }
                             echo '</tr>';
 
-                            while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-                                echo '<tr>';
-                                foreach ($row as $r) {
-                                    echo "<td>$r</td>";
+                            if ($searchType != 'drivers') {
+                                while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                                    echo '<tr>';
+                                    foreach ($row as $r) {
+                                        echo "<td>$r</td>";
+                                    }
+                                    echo '</tr>';
+                                }
+                            } else {
+                                while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                                    $columns = count($row);
+
+                                    echo '<tr>';
+                                    for ($i = 0; $i < $columns - 1; $i++) {
+                                        echo "<td>$row[$i]</td>";
+                                    }
+
+                                    echo '<td><form method="GET" action="results.php"><input type="hidden" name="driverId" value="'.$row[$columns - 1].'"><button type="submit">Favourite</button></form></td></tr>';
                                 }
                             }
-
                         } else {
                             echo '<br><p id="noResults">No results found!</p>';
                         }
