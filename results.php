@@ -1,15 +1,5 @@
 <?php
 session_start();
-
-if (isset($_GET['driverId'])) {
-    $driverId = $_GET['driverId'];
-
-    if (!isset($_SESSION['favDrivers'])) {
-        $_SESSION['favDrivers'] = array();
-    }
-
-    $_SESSION['favDrivers'][] = $driverId;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +56,7 @@ include 'search.php';
                                         echo "<td>$row[$i]</td>";
                                     }
 
-                                    echo '<td><form method="GET" action="results.php"><input type="hidden" name="driverId" value="'.$row[$columns - 1].'"><button type="submit">Favourite</button></form></td></tr>';
+                                    echo '<td><form method="GET" action="mydrivers.php"><input type="hidden" name="driverId" value="'.$row[$columns - 1].'"><button type="submit">Favourite</button></form></td></tr>';
                                 }
                             }
                         } else {

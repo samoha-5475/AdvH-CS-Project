@@ -1,5 +1,21 @@
 <?php
 session_start();
+
+if (isset($_GET['driverId'])) {
+    $driverId = $_GET['driverId'];
+
+    if (!isset($_SESSION['favDrivers'])) {
+        $_SESSION['favDrivers'] = array();
+    }
+
+    if (!in_array($driverId, $_SESSION['favDrivers'])) {
+        $_SESSION['favDrivers'][] = $driverId;
+        echo 'favourite added!';
+    }
+
+    $_GET['driverId'] = null;
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +29,49 @@ session_start();
 <?php
 include 'header.php';
 ?>
+<main>
+    <section>
+        <div class="row">
+            <div class="col-12">
+                <h2>My Drivers</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="resultsTableContainer">
+                    <table id="resultsTable">
+                        <?php
+                        if (!isset($_SESSION['favDrivers'])) {
+                            echo '<p>Select some favourite drivers first!</p>';
+                        } else {
+                            include 'database.php';
+
+                            if (!$connection) {die('Connection to database failed!');}
+
+                            echo '<tr><th>Number</th><th>Code</th><th>Forename</th><th>Surname</th><th>Nationality</th></tr>';
+
+                            foreach ($_SESSION['favDrivers'] as $driverId) {
+                                $query = ("SELECT IFNULL(number, 'N/A') as number, IFNULL(code, 'N/A') as code, forename, surname, nationality FROM drivers WHERE driverId = '$driverId'");
+
+                                $result = mysqli_query($connection, $query);
+                                $row = mysqli_fetch_array($result, MYSQLI_NUM);
+
+                                echo '<tr>';
+                                foreach ($row as $column) {
+                                    echo "<td>$column</td>";
+                                }
+                                echo '</tr>';
+                            }
+
+                            mysqli_close($connection);
+                        }
+                        ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 <?php
 include 'footer.php';
 ?>

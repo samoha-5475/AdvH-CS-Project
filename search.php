@@ -1,7 +1,11 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+//if (isset($_GET['searchType']) && isset($_GET['searchText'])) {
     $searchType = $_GET['searchType'];
     $searchText = $_GET['searchText'];
+
+//    $_GET['searchType'] = null;
+//    $_GET['searchText'] = null;
 
     switch ($searchType) {
         case 'drivers':
@@ -14,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $query = ("SELECT name, location, country  FROM circuits WHERE name LIKE '%$searchText%' OR location LIKE '%$searchText%' OR country LIKE '%$searchText%';");
     }
 
-    require 'database.php';
+    include 'database.php';
 
     if (!$connection) {die('Connection to database failed!');}
 
