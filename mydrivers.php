@@ -12,9 +12,6 @@ if (isset($_GET['driverId'])) {
         $_SESSION['favDrivers'][] = $driverId;
         echo 'favourite added!';
     }
-
-    $_GET['driverId'] = null;
-
 }
 ?>
 <!DOCTYPE html>
@@ -57,12 +54,15 @@ include 'header.php';
                                 $row = mysqli_fetch_array($result, MYSQLI_NUM);
 
                                 echo '<tr>';
+
                                 foreach ($row as $column) {
                                     echo "<td>$column</td>";
                                 }
-                                echo '</tr>';
-                            }
 
+                                // add another hidden string saying the operation type like ADD DRIVER and DELETE DRIVER
+
+                                echo '<td><form method="GET" action="mydrivers.php"><input type="hidden" name="driverId" value="'.$driverId.'"><button class="removeDriverButton" type="submit"><img src="img/cross-icon.svg" alt="remove driver"></button></form></td></tr>';
+                            }
                             mysqli_close($connection);
                         }
                         ?>

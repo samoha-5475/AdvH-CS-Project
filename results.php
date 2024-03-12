@@ -31,15 +31,15 @@ include 'search.php';
                     <table id="resultsTable">
                         <?php
                         if (mysqli_num_rows($result) > 0) {
-                            $headers = mysqli_fetch_fields($result);
-
-                            echo '<tr>';
-                            foreach ($headers as $header) {
-                                echo '<th>'.ucfirst($header->name).'</th>';
-                            }
-                            echo '</tr>';
-
                             if ($searchType != 'drivers') {
+                                $headers = mysqli_fetch_fields($result);
+
+                                echo '<tr>';
+                                foreach ($headers as $header) {
+                                    echo '<th>'.ucfirst($header->name).'</th>';
+                                }
+                                echo '</tr>';
+
                                 while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
                                     echo '<tr>';
                                     foreach ($row as $r) {
@@ -48,6 +48,8 @@ include 'search.php';
                                     echo '</tr>';
                                 }
                             } else {
+                                echo '<tr><th>Number</th><th>Code</th><th>Forename</th><th>Surname</th><th>Nationality</th></tr>';
+
                                 while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
                                     $columns = count($row);
 
@@ -56,7 +58,7 @@ include 'search.php';
                                         echo "<td>$row[$i]</td>";
                                     }
 
-                                    echo '<td><form method="GET" action="mydrivers.php"><input type="hidden" name="driverId" value="'.$row[$columns - 1].'"><button type="submit">Favourite</button></form></td></tr>';
+                                    echo '<td><form method="GET" action="mydrivers.php"><input type="hidden" name="driverId" value="'.$row[$columns - 1].'"><button type="submit" class="favouriteButton">Add to "My Drivers"</button></form></td></tr>';
                                 }
                             }
                         } else {

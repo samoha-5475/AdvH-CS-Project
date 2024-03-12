@@ -313,6 +313,28 @@ h2 {
     border-top: 1px solid #ddd;
 }
 
+.favouriteButton {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    padding: 0.5em;
+    border: none;
+}
+
+.removeDriverButton {
+    filter: grayscale(100%);
+    background: none;
+    border: none;
+}
+
+.removeDriverButton:hover {
+    filter: grayscale(0%);
+}
+
+.removeDriverButton img {
+    width: 2em;
+    height: auto;
+}
+
 /* Footer */
 footer {
     background-color: #fafafa;
