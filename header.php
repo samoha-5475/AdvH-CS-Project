@@ -12,7 +12,7 @@
                         <li><a href="index.php">Home</a></li>
                         <li><a href="leaderboards.php">Leaderboards</a></li>
                         <li><a href="mydrivers.php">My Drivers</a></li>
-                        <li><a href="">Head 2 Head</a></li>
+                        <li><a href="compare.php">Head 2 Head</a></li>
                     </ul>
                 </nav>
             </div>
