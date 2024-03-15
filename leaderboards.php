@@ -70,6 +70,16 @@ function createLeaderboard($connection, $query) {
                     <div class="leaderboardContainer">
                         <table class="leaderboard">
                             <?php
+                            //SELECT constructors.name, COUNT(constructor_standings.position = 1)
+                            //FROM constructors, constructor_standings, races, seasons
+                            //WHERE constructors.constructorId = constructor_standings.constructorId
+                            //AND constructor_standings.constructorId = races.raceId
+                            //AND races.year = seasons.year
+                            //AND constructor_standings.position = 1
+                            //AND races.date = (SELECT MAX(date) FROM races)
+                            //GROUP BY constructors.name
+                            //LIMIT 10;
+
                             $query = "SELECT name FROM constructors LIMIT 10;";
 
                             createLeaderboard($connection, $query);

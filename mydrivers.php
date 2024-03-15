@@ -10,7 +10,6 @@ if (isset($_GET['driverId'])) {
 
     if (!in_array($driverId, $_SESSION['favDrivers'])) {
         $_SESSION['favDrivers'][] = $driverId;
-        echo 'favourite added!';
     }
 }
 ?>
@@ -34,7 +33,7 @@ include 'header.php';
                 <h2>My Drivers</h2>
             </div>
         </div>
-        <form method="GET" action="compare.php">
+        <form id="compareForm" method="GET" action="compare.php">
             <div class="row">
                 <div class="col-12">
                     <div id="resultsTableContainer">
@@ -72,7 +71,9 @@ include 'header.php';
             </div>
             <div class="row">
                 <div class="col-12">
-                    <button type="submit">Submit</button>
+                    <div id="compareButtonContainer">
+                        <button id="compareButton" type="submit">Compare</button>
+                    </div>
                 </div>
             </div>
         </form>

@@ -58,7 +58,7 @@ include 'search.php';
                                         echo "<td>$row[$i]</td>";
                                     }
 
-                                    echo '<td><form method="GET" action="mydrivers.php"><input type="hidden" name="driverId" value="'.$row[$columns - 1].'"><button type="submit" class="favouriteButton">Add to "My Drivers"</button></form></td></tr>';
+                                    echo '<td><form method="GET" action="mydrivers.php"><input type="hidden" name="driverId" value="'.$row[$columns - 1].'"><button type="submit" class="addToMyDriversButton">Add to "My Drivers"</button></form></td></tr>';
                                 }
                             }
                         } else {
