@@ -210,17 +210,6 @@ main, header {
     padding: 1em;
 }
 
-/* Leaderboards */
-#leaderboardTitleContainer {
-    text-align: center;
-}
-
-#leaderboardTitleContainer h2 {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 600;
-    font-size: 2em;
-}
-
 h2 {
     text-align: center;
     font-family: 'Rubik', sans-serif;
@@ -236,6 +225,10 @@ h2 {
 
 .leaderboardContainer {
     display: inline-block;
+}
+
+.leaderboardContainer h2 {
+    padding-bottom: 1em;
 }
 
 .leaderboard {
@@ -347,10 +340,15 @@ h2 {
 
 /* Footer */
 footer {
+    margin-top: 2em;
     background-color: #fafafa;
     font-family: 'Rubik', sans-serif;
     color: #505050;
     font-size: 0.75em;
+}
+
+#footerInfo {
+    text-align: right;
 }
 
 /* Media Queries */
@@ -365,7 +363,7 @@ footer {
 
     #searchText {padding-right: 2em;}
 
-    .title-container, footer p {text-align: center;}
+    .title-container, footer p, #footerInfo {text-align: center;}
 
     .listItem {width: 50%;}
 

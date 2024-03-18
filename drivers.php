@@ -26,20 +26,18 @@ include 'header.php';
                     <?php
                     include 'database.php';
 
-                    if (!$connection) {die('Connection to database failed!');}
-
+                    // Creates the query to get every drivers name from the database
                     $query = ("SELECT CONCAT(forename, ' ', surname) AS Name FROM drivers ORDER BY forename;");
 
+                    // Runs the query and assigns the result to a variable
                     $result = mysqli_query($connection, $query);
 
+                    // Closes the connection to the database
                     mysqli_close($connection);
 
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-                            echo '<p class="listItem">'.$row[0].'</p>';
-                        }
-                    } else {
-                        echo '<br><p id="noResults">No results found!</p>';
+                    // Displays each driver's name while there is a row in left in the result array
+                    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                        echo '<p class="listItem">'.$row[0].'</p>';
                     }
                     ?>
                 </div>

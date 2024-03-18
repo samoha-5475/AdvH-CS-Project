@@ -9,56 +9,58 @@
 <body>
 <?php
 include 'header.php';
+
+// Creates a connection to the database
 include 'database.php';
 
+// Defines the function to create a leaderboard given a connection to the database and a query
 function createLeaderboard($connection, $query) {
+    // Runs the query and assigns the result to a variable
     $result = mysqli_query($connection, $query);
 
-    if (mysqli_num_rows($result) > 0) {
-        $headers = mysqli_fetch_fields($result);
+    // Gets the headers from the result
+    $headers = mysqli_fetch_fields($result);
 
-        echo '<tr><th></th>';
-        foreach ($headers as $header) {
-            echo '<th>' .ucfirst($header->name). '</th>';
+    // Creates the header row, ensuring the first character is uppercase
+    echo '<tr><th></th>';
+    foreach ($headers as $header) {
+        echo '<th>' .ucfirst($header->name). '</th>';
+    }
+    echo '</tr>';
+
+    // Initialises a counter variable
+    $counter = 1;
+
+    // Loops for each row of the leaderboard until there are none left
+    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+        // Displays the leaderboard position
+        echo '<tr><td id="leaderboard'.$counter.'">'.$counter.'</td>';
+
+        // Displays each value in the row
+        foreach ($row as $r) {
+            echo "<td>$r</td>";
         }
         echo '</tr>';
 
-        $counter = 1;
-
-        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-            echo '<tr><td id="leaderboard'.$counter.'">'.$counter.'</td>';
-            foreach ($row as $r) {
-                echo "<td>$r</td>";
-            }
-            echo '</tr>';
-
-            $counter++;
-        }
+        // Increments the counter variable
+        $counter++;
     }
 }
 
 ?>
 <main>
     <section>
-        <div class="row" id="leaderboardTitleContainer">
-            <div class="col-4">
-                <h2>Top Drivers</h2>
-            </div>
-            <div class="col-4">
-                <h2>Top Constructors</h2>
-            </div>
-            <div class="col-4">
-                <h2>Top Points</h2>
-            </div>
-        </div>
         <div class="row">
             <div class="col-4">
                 <div class="flexContainer">
                     <div class="leaderboardContainer">
+                        <h2>Top Drivers</h2>
                         <table class="leaderboard">
                             <?php
+                            // Creates the query to get the top 10 drivers ordered by grand prix wins
                             $query = "SELECT CONCAT(forename, ' ', surname) AS Name, IFNULL(SUM(results.position = 1), 0) AS `Grand Prix Wins` FROM drivers, results WHERE drivers.driverId = results.driverId GROUP BY drivers.driverId ORDER BY `Grand Prix Wins` DESC LIMIT 10;";
 
+                            // Calls the function to create the leaderboard, passing in a connection and the query
                             createLeaderboard($connection, $query);
                             ?>
                         </table>
@@ -68,20 +70,13 @@ function createLeaderboard($connection, $query) {
             <div class="col-4">
                 <div class="flexContainer">
                     <div class="leaderboardContainer">
+                        <h2>Top Constructors</h2>
                         <table class="leaderboard">
                             <?php
-                            //SELECT constructors.name, COUNT(constructor_standings.position = 1)
-                            //FROM constructors, constructor_standings, races, seasons
-                            //WHERE constructors.constructorId = constructor_standings.constructorId
-                            //AND constructor_standings.constructorId = races.raceId
-                            //AND races.year = seasons.year
-                            //AND constructor_standings.position = 1
-                            //AND races.date = (SELECT MAX(date) FROM races)
-                            //GROUP BY constructors.name
-                            //LIMIT 10;
+                            // Creates the query to get the top 10 constructors ordered by total race wins
+                            $query = 'SELECT name as Constructor, COUNT(results.constructorId) as `Race Wins` FROM results, constructors WHERE constructors.constructorId = results.constructorId AND position = 1 GROUP BY Constructor ORDER BY `Race Wins` DESC LIMIT 10;';
 
-                            $query = "SELECT name FROM constructors LIMIT 10;";
-
+                            // Calls the function to create the leaderboard, passing in a connection and the query
                             createLeaderboard($connection, $query);
                             ?>
                         </table>
@@ -91,12 +86,16 @@ function createLeaderboard($connection, $query) {
             <div class="col-4">
                 <div class="flexContainer">
                     <div class="leaderboardContainer">
+                        <h2>Top Circuits</h2>
                         <table class="leaderboard">
                             <?php
-                            $query = "SELECT constructors.name AS Team, constructor_standings.points, seasons.year AS Season FROM constructors, constructor_standings, races, seasons WHERE constructors.constructorId = constructor_standings.constructorId AND constructor_standings.raceId = races.raceId AND races.year = seasons.year ORDER BY points DESC LIMIT 10;";
+                            // Creates the query to get the top 10 circuits ordered by the number of races held
+                            $query = 'SELECT location as Circuit, COUNT(races.circuitid) AS `Races Held` FROM circuits, races WHERE races.circuitid = circuits.circuitid GROUP BY Circuit ORDER BY `Races Held` desc LIMIT 10;';
 
+                            // Calls the function to create the leaderboard, passing in a connection and the query
                             createLeaderboard($connection, $query);
 
+                            // Closes the connection to the database
                             mysqli_close($connection);
                             ?>
                         </table>
