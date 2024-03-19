@@ -35,6 +35,6 @@ for (let letter of alphabet) {
     // Adds the button to a <div> container
     alphabetContainer.appendChild(button);
 
-    // Adds an onclick event listener to the current button
-    button.addEventListener('click', () => scrollToLetter(letter));
+    // Adds an on click event listener to the current button to call the scroll function
+    button.addEventListener('click', function() { scrollToLetter(letter); });
 }

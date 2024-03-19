@@ -36,14 +36,9 @@ include 'header.php';
                     // Closes the connection to the database
                     mysqli_close($connection);
 
-                    // Checks if the number of rows in the result is more than zero
-                    if (mysqli_num_rows($result) > 0) {
-                        // Displays each circuit while there is a row in left in the result array
-                        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-                            echo '<p class="listItem">'.$row[0].'</p>';
-                        }
-                    } else {
-                        echo '<br><p id="noResults">No results found!</p>';
+                    // Displays each circuit while there is a row in left in the result array
+                    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                        echo '<p class="listItem">'.$row[0].'</p>';
                     }
                     ?>
                 </div>

@@ -42,7 +42,7 @@ include 'header.php';
         <form id="compareForm" method="GET" action="compare.php">
             <div class="row">
                 <div class="col-12">
-                    <div id="resultsTableContainer">
+                    <div class="flexContainer">
                         <table id="resultsTable">
                             <?php
                             // Checks if the session variable 'favDrivers' is populated

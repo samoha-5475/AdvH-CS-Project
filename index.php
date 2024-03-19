@@ -15,31 +15,31 @@ include 'header.php';
     <section>
         <div class="row">
             <div class="col-12"">
-            <form action="results.php" method="GET" id="searchBarContainer">
-                <div id="searchBar">
-                    <select id="searchDropdown" name="searchType">
-                        <option value="drivers">Drivers</option>
-                        <option value="constructors">Teams</option>
-                        <option value="circuits">Tracks</option>
-                    </select>
-                    <input id="searchText" name="searchText" placeholder="Enter driver name..." required>
-                    <button id="searchSubmit" type="submit"><img src="img/search.png" alt="submit"></button>
-                </div>
-            </form>
-        </div>
+                <form action="results.php" method="GET" id="searchBarContainer">
+                    <div id="searchBar">
+                        <select id="searchDropdown" name="searchType">
+                            <option value="drivers">Drivers</option>
+                            <option value="constructors">Teams</option>
+                            <option value="circuits">Tracks</option>
+                        </select>
+                        <input id="searchText" name="searchText" placeholder="Enter driver name..." required>
+                        <button id="searchSubmit" type="submit"><img src="img/search.png" alt="submit"></button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
     <section>
         <div class="row">
             <div class="col-6">
-                <div class="imgButtonContainer">
-                    <img src="img/drivers.jpg" alt="Drivers from the 2022 season">
+                <div class="flexContainer">
+                    <img class="imgButtonImg" src="img/drivers.jpg" alt="Drivers from the 2022 season">
                     <button class="imgButton"><a href="drivers.php">Drivers</a></button>
                 </div>
             </div>
             <div class="col-6">
-                <div class="imgButtonContainer">
-                    <img src="img/circuits.jpg" alt="Incident at the Australian Grand Prix 2023">
+                <div class="flexContainer">
+                    <img class="imgButtonImg" src="img/circuits.jpg" alt="Incident at the Australian Grand Prix 2023">
                     <button class="imgButton"><a href="tracks.php">Tracks</a></button>
                 </div>
             </div>

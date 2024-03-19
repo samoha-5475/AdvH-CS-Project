@@ -1,13 +1,22 @@
-/* Import Fonts */
+/* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap');
 
 /* Remove browser defaults */
 * {
+    font-family: 'Rubik', sans-serif;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
+/* Header 2 styling */
+h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+/* Defines column widths */
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
@@ -21,24 +30,26 @@
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 
+/* Column styling */
 [class*="col-"] {
     float: left;
     padding: 15px;
-    /*border: 1px solid #ff0000;*/
 }
 
+/* Applies a clear both after each row to maintain consistent column styling */
 .row::after {
     content: "";
     clear: both;
     display: table;
 }
 
+/* Margins */
 main, header {
     margin-right: 5em;
     margin-left: 5em;
 }
 
-/* Navigation Bar */
+/* Navigation bar */
 #navBar {
     float: right;
 }
@@ -52,7 +63,6 @@ main, header {
 }
 
 #navBar ul li a {
-    font-family: 'Rubik', sans-serif;
     text-decoration: none;
     font-size: 1.5em;
     display: block;
@@ -64,30 +74,22 @@ main, header {
     background-color: #f0f8ff;
 }
 
-/* Button on top of image */
-.imgButtonContainer, #resultsTableContainer {
-    display: flex;
+/* Flex container */
+.flexContainer, #searchBarContainer, #searchBar {
+    display: flex; /* Creates a flex container */
     align-items: center; /* Center items vertically */
     justify-content: center; /* Center items horizontally */
 }
-.imgButtonContainer img {
-    max-width: 70%;
-    height: auto;
-}
 
-.imgButtonContainer button {
-    position: absolute;
-}
-
-/* Image Button */
+/* Button over image styling */
 .imgButton {
-    cursor: pointer;
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
     box-shadow: 0.2em 0.2em 0.5em;
-    background: #ffffff;
     padding: 0.2em 0.5em;
+    background: #ffffff;
+    text-align: center;
+    position: absolute; /* Positions relative to nearest ancestor */
     font-size: 1.5em;
+    cursor: pointer; /* Indicates this element is clickable */
     border: none;
 }
 
@@ -101,52 +103,50 @@ main, header {
     padding: 0.3em 0.6em;
 }
 
+.imgButtonImg {
+    max-width: 70%;
+    height: auto;
+}
+
 /* Search bar */
+/* Applies a background image to the container */
 #searchBarContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40vh;
     background-image: url('img/search-banner.jpg');
-    background-repeat: no-repeat;
     background-position: center 75%;
+    background-repeat: no-repeat;
+    height: 40vh;
 }
 
 #searchBar {
-    width: max-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-shadow: 0.2em 0.2em 0.5em;
     background-color: #ffffff;
+    width: max-content;
     padding: 0.5em;
 }
 
 #searchText {
-    font-family: 'Rubik', sans-serif;
-    font-size: 1.5em;
     padding: 0.5em 5em 0.5em 0.5em;
-    border: none;
-    margin-left: 0.5em;
     margin-right: 0.5em;
+    margin-left: 0.5em;
+    font-size: 1.5em;
+    border: none;
 }
 
 #searchDropdown {
-    cursor: pointer;
-    background: none;
-    font-family: 'Rubik', sans-serif;
-    font-size: 1.5em;
-    color: #484646;
-    margin-left: 0.5em;
     margin-right: 0.5em;
+    margin-left: 0.5em;
+    background: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #484646;
     border: none;
 }
 
 #searchSubmit {
-    cursor: pointer;
-    background: none;
-    border: none;
     margin-right: 0.5em;
+    background: none;
+    cursor: pointer;
+    border: none;
 }
 
 #searchSubmit img {
@@ -156,33 +156,25 @@ main, header {
 }
 
 /* Header */
-#headerRow {
+#headerContainer {
     display: flex;
     align-items: center;
 }
 
 #title {
     font-size: 2.5em;
-    font-family: 'Rubik', sans-serif;
     font-weight: 600;
 }
 
-/* Results Table */
-#resultsTable, #resultsTable th, #resultsTable td {
-    /*border: 1px solid;*/
-}
-
+/* Results table */
 #resultsTable {
-    font-family: 'Rubik', sans-serif;
     border-collapse: collapse;
-    /* RETIRED */
 }
 
 #resultsTable th, #resultsTable td {
     border-bottom: 1px solid #ddd;
     padding: 1em;
     text-align: center;
-
 }
 
 #resultsTable th {
@@ -195,34 +187,18 @@ main, header {
     height: 1.5em;
 }
 
-/* #resultsTable tr:hover {
-    background-color: #f0f8ff;
-} */
-
+/* Number of results text */
 #numResultsContainer {
-    border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 
 #numResults {
-    font-family: 'Rubik', sans-serif;
     font-size: 1em;
     padding: 1em;
 }
 
-h2 {
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 600;
-    font-size: 2em;
-}
-
-.flexContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Leaderboards */
 .leaderboardContainer {
     display: inline-block;
 }
@@ -232,15 +208,14 @@ h2 {
 }
 
 .leaderboard {
-    font-family: 'Rubik', sans-serif;
     border-collapse: collapse;
     border: 0.2em solid #363636;
 }
 
 .leaderboard th, .leaderboard td {
-    padding: 1em;
     border: 1px solid #ddd;
     text-align: center;
+    padding: 1em;
 }
 
 .leaderboard th {
@@ -252,6 +227,7 @@ h2 {
     vertical-align: center;
 }
 
+/* Styles for first, second, third */
 #leaderboard1 {
     font-weight: 700;
     color: #ffd700;
@@ -267,47 +243,47 @@ h2 {
     color: #a05822;
 }
 
-/* Lists */
+/* Driver and track lists */
 #listContainer {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    flex-wrap: wrap;
+    display: flex;
 }
 
 .listItem {
-    font-family: 'Rubik', sans-serif;
     padding: 0.5em;
     width: 25%;
 }
 
+/* Alphabet buttons */
 #alphabetContainer {
-    text-align: center;
-    border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    text-align: center;
 }
 
 .alphabetButton {
     border: none;
     background: none;
-    font-family: 'Rubik', sans-serif;
     padding: 1em 1em 1em 1em;
     font-weight: 600;
     font-size: 1em;
 }
 
+/* No results message */
 #noResults {
-    font-family: 'Rubik', sans-serif;
     font-weight: 600;
     font-size: 1.2em;
     padding: 1em;
 }
 
+/* Grey top border */
 #topBorder {
     border-top: 1px solid #ddd;
 }
 
+/* Add to my drivers button */
 .addToMyDriversButton {
-    font-family: 'Rubik', sans-serif;
     font-weight: 600;
     padding: 0.5em;
     border: none;
@@ -317,14 +293,14 @@ h2 {
     background-color:#dbdbdb;
 }
 
+/* Driver comparison button */
 #compareButton {
-    cursor: pointer;
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
-    box-shadow: 0em 0em 0.3em 0.05em;
-    background: #ffffff;
+    box-shadow: 0 0 0.3em 0.05em;
     padding: 0.2em 0.5em;
+    background: #ffffff;
+    text-align: center;
     font-size: 1.5em;
+    cursor: pointer;
     border: none;
 }
 
@@ -332,6 +308,7 @@ h2 {
     background-color: #f0f8ff;
 }
 
+/* Driver comparison button container */
 #compareButtonContainer {
     text-align:center;
     padding-top: 1.5em;
@@ -340,11 +317,10 @@ h2 {
 
 /* Footer */
 footer {
-    margin-top: 2em;
     background-color: #fafafa;
-    font-family: 'Rubik', sans-serif;
-    color: #505050;
     font-size: 0.75em;
+    margin-top: 2em;
+    color: #505050;
 }
 
 #footerInfo {
@@ -353,20 +329,23 @@ footer {
 
 /* Media Queries */
 @media only screen and (max-width: 800px) {
+    /* Increases column width to 100% */
     [class*="col-"] {
         width: 100%;
     }
 
     main, header {margin: 0;}
 
-    #headerRow {display: block;}
+    #headerContainer {display: block;}
 
     #searchText {padding-right: 2em;}
 
     .title-container, footer p, #footerInfo {text-align: center;}
 
+    /* Reduces the number of columns shown in the driver/track lists */
     .listItem {width: 50%;}
 
+    /* Centers the navigation bar */
     #navBarContainer {
         display: flex;
         align-items: center;

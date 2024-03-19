@@ -27,7 +27,7 @@ include 'search.php';
         </div>
         <div class="row">
             <div class="col-12">
-                <div id="resultsTableContainer">
+                <div class="flexContainer">
                     <table id="resultsTable">
                         <?php
                         // Checks if the number of rows produced by the search is more than zero
