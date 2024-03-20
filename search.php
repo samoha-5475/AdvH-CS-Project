@@ -2,8 +2,9 @@
 // Checks if the server send method was 'GET'
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Assigns the received data to variables
+    // The text input field is appropriately validated
     $searchType = $_GET['searchType'];
-    $searchText = $_GET['searchText'];
+    $searchText = htmlspecialchars($_GET['searchText']);
 
     // Defines a switch statement of the variable '$searchType'
     switch ($searchType) {
