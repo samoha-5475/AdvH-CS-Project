@@ -58,7 +58,7 @@ function createLeaderboard($connection, $query) {
                         <table class="leaderboard">
                             <?php
                             // Creates the query to get the top 10 drivers ordered by grand prix wins
-                            $query = "SELECT CONCAT(forename, ' ', surname) AS Name, IFNULL(SUM(results.position = 1), 0) AS `Grand Prix Wins` FROM drivers, results WHERE drivers.driverId = results.driverId GROUP BY drivers.driverId ORDER BY `Grand Prix Wins` DESC LIMIT 10;";
+                            $query = "SELECT CONCAT(forename, ' ', surname) AS Name, SUM(results.position = 1) AS `Grand Prix Wins` FROM drivers, results WHERE drivers.driverId = results.driverId GROUP BY drivers.driverId ORDER BY `Grand Prix Wins` DESC LIMIT 10;";
 
                             // Calls the function to create the leaderboard, passing in a connection and the query
                             createLeaderboard($connection, $query);
@@ -74,7 +74,7 @@ function createLeaderboard($connection, $query) {
                         <table class="leaderboard">
                             <?php
                             // Creates the query to get the top 10 constructors ordered by total race wins
-                            $query = 'SELECT name as Constructor, COUNT(results.constructorId) as `Race Wins` FROM results, constructors WHERE constructors.constructorId = results.constructorId AND position = 1 GROUP BY Constructor ORDER BY `Race Wins` DESC LIMIT 10;';
+                            $query = 'SELECT name AS Constructor, SUM(results.position = 1) AS `Grand Prix Wins` FROM constructors, results WHERE constructors.constructorId = results.constructorId GROUP BY constructors.constructorId ORDER BY `Grand Prix Wins` DESC LIMIT 10;';
 
                             // Calls the function to create the leaderboard, passing in a connection and the query
                             createLeaderboard($connection, $query);
@@ -90,7 +90,7 @@ function createLeaderboard($connection, $query) {
                         <table class="leaderboard">
                             <?php
                             // Creates the query to get the top 10 circuits ordered by the number of races held
-                            $query = 'SELECT location as Circuit, COUNT(races.circuitid) AS `Races Held` FROM circuits, races WHERE races.circuitid = circuits.circuitid GROUP BY Circuit ORDER BY `Races Held` desc LIMIT 10;';
+                            $query = 'SELECT location AS Circuit, COUNT(races.circuitid) AS `Races Held` FROM circuits, races WHERE races.circuitid = circuits.circuitid GROUP BY Circuit ORDER BY `Races Held` DESC LIMIT 10;';
 
                             // Calls the function to create the leaderboard, passing in a connection and the query
                             createLeaderboard($connection, $query);
